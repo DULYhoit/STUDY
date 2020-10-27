@@ -6,13 +6,13 @@ import java.util.ArrayList;
 public class Coffee {
 	Scanner sc = new Scanner(System.in); 
 
-	/// Å¬·¡½º¹è¿­°¢ °³°£Àý 
+	/// Å¬ï¿½ï¿½ï¿½ï¿½ï¿½è¿­ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ 
 	ArrayList<CoffeeData> cof = new ArrayList<CoffeeData>();
 	ArrayList<CoffeeData> smm = new ArrayList<CoffeeData>();
 	ArrayList<CoffeeData> cake = new ArrayList<CoffeeData>();
 	
 	
-	public Coffee() { //»ý»êÀÚ
+	public Coffee() { //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 		Coff();
 		Smoth();
 		Cake();
@@ -20,24 +20,24 @@ public class Coffee {
 	}
 	
 	public void Coff() {
-		cof.add(0, new CoffeeData("¾Æ¸Þ¸®Ä«³ë", 1500));
-		cof.add(1, new CoffeeData("ICE ¾Æ¸Þ¸®Ä«³ë", 2000));
-		cof.add(2, new CoffeeData("¸ðÄ«¶ó¶¼", 3000));
-		cof.add(3, new CoffeeData("Ä«¶ó¸á ¸¶³¢¾ß¶Ç", 3000));
+		cof.add(0, new CoffeeData("ï¿½Æ¸Þ¸ï¿½Ä«ï¿½ï¿½", 1500));
+		cof.add(1, new CoffeeData("ICE ï¿½Æ¸Þ¸ï¿½Ä«ï¿½ï¿½", 2000));
+		cof.add(2, new CoffeeData("ï¿½ï¿½Ä«ï¿½ï¿½", 3000));
+		cof.add(3, new CoffeeData("Ä«ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ß¶ï¿½", 3000));
 		
 	}
 	
 	public void Smoth() {
-		smm.add(0, new CoffeeData("¿ä°ÅÆ® ½º¹«µð", 4000));
-		smm.add(1, new CoffeeData("µþ±â½º¹«µð", 4500));
+		smm.add(0, new CoffeeData("ï¿½ï¿½ï¿½Æ® ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½", 4000));
+		smm.add(1, new CoffeeData("ï¿½ï¿½ï¿½â½ºï¿½ï¿½ï¿½ï¿½", 4500));
 
 
 		
 	}
 	
 	public void Cake() {
-		cake.add(0, new CoffeeData("Ä¡ÁîÄÉÀÍ", 5000));
-		cake.add(1, new CoffeeData("ÃÊÄÚÄÉÀÍ", 5000));
+		cake.add(0, new CoffeeData("Ä¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½", 5000));
+		cake.add(1, new CoffeeData("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½", 5000));
 	}
 	
 
