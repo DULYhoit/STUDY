@@ -4,8 +4,8 @@ import java.util.ArrayList;
 
 public class Coffeeinterface {
 	ArrayList<CoffeeData> cof = new ArrayList<CoffeeData>();//문제점1.인덱스값을 지정해준 변수 이름으로 포인팅해야되서 메뉴를 장르 하나씩만 선택가능
-	ArrayList<CoffeeData> side = new ArrayList<CoffeeData>();//문제점2.그로인해 for문도 3가지로 돌려야되고 무한포문도 3번을 넣야함....
-	ArrayList<CoffeeData> smo = new ArrayList<CoffeeData>();//어레이리스트 하나로 해야함->DB쪽으로 생각 바꿈//해결책:무한포문을걸고 내가 고른인덱스값들이 저장될수있는 클래스하나를 만들것
+	ArrayList<CoffeeData> side = new ArrayList<CoffeeData>();//문제점2.그로인해 for문도 3가지로 돌려야됨....
+	ArrayList<CoffeeData> smo = new ArrayList<CoffeeData>();//어레이리스트 하나로 해야함->DB쪽으로 생각 바꿈//해결책:무엇을 골랏는지의 정보를 담아야함
 
 	public Coffeeinterface() {
 

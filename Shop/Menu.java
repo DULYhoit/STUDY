@@ -8,26 +8,24 @@ public class Menu {
 	MemberEdit log = new MemberEdit();
 	Scanner scan = new Scanner(System.in);
 	Coffeeinterface fa = new Coffeeinterface();
-	int cho = 0;
-	int count = 0;
+	int cho = 0;// 선택
+	int count = 0;// 스캐너
 	int index = 0;
-	int tip = 0;
+	final int tip = 500;// 먹고가면 500원
 	// 먹고가기 포장하기 구별
-	int eat = 0;
-	int pack = 0;
-	
-	
+	int eat = 0;//먹고가기
+	int pack = 0;//포장하기
 
 	public Menu() {
-		
+
 	}
 
 	public void startmenu() {
-		
-		if(log.login == true) {
-			System.out.println("======"+log.loginname+"님====");
+
+		if (log.login == true) {
+			System.out.println("======" + log.loginname + "님====");
 			System.out.println("|MEGA 커피에 오신것을 환영합니다. |");
-		}else {
+		} else {
 			System.out.println("|MEGA 커피에 오신것을 환영합니다. |");
 		}
 		System.out.println("|---------------|");
@@ -38,38 +36,44 @@ public class Menu {
 		cho = scan.nextInt();
 		if (cho == 1) {
 			eat = 1;
-			
+
 			System.out.println("먹고 가시면 + 500원");
 			menuone();
-		}
-		if (cho == 2) {
+		} else if (cho == 2) {
 			pack = 1;
 			menuone();
+		} else {
+			System.out.println("잘못입력");
+			startmenu();
 		}
 
 	}
 
 	void menuone() {
-		System.out.println("1.커피");
-		System.out.println("2.스무디");//장르를 나눠? 한꺼번에? 
-		System.out.println("3.사이드");
-		cho = scan.nextInt();
-		if (cho == 1) {
-			chocoffee();
-		} else if (cho == 2) {
-			chosmoo();
-		} else if (cho == 3) {
-			choside();
-		} else {
-			System.out.println("잘못입력함");
+		while (true) {
+			System.out.println("1.커피");
+			System.out.println("2.스무디");// 장르를 나눠? 한꺼번에?
+			System.out.println("3.사이드");
+			System.out.println("4.주문완료");
+			cho = scan.nextInt();
+			if (cho == 1) {
+				chocoffee();
+			} else if (cho == 2) {
+				chosmoo();
+			} else if (cho == 3) {
+				choside();
+			} else if (cho == 4) {
+				buyend();
+				break;
+			} else {
+				System.out.println("잘못입력함");
+			}
 		}
-
 	}
-	/*void menuone(){
-	 * for(int i = 0 ; i>데이터베이스 length만큼 ; i++)
-	 * i는ID 칼럼의 id넘버
-	 * System.out.println((i+1)+". "+id)
-	 * }
+
+	/*
+	 * void menuone(){ for(int i = 0 ; i>데이터베이스 length만큼 ; i++) i는ID 칼럼의 id넘버
+	 * System.out.println((i+1)+". "+id) }
 	 */
 
 	// 커피 목록
@@ -92,13 +96,14 @@ public class Menu {
 		if (pack == 1) {
 			System.out.println("총가격 = " + (fa.cof.get(index).price) * count + "원");
 		} else if (eat == 1) {
-			System.out.println("총가격 = " + (((fa.cof.get(index).price) * count) +(500*count)) + "원");
+			System.out.println("계산 = " + (((fa.cof.get(index).price) * count) +"원 + 팁"+ (tip * count)) + "원");
+			System.out.println("총가격 =" + (((fa.cof.get(index).price) * count) + (tip * count)) + "원");
 		}
 		reset();
 	}
 
 	void chosmoo() {
-		fa.smoointerface();//Coffeeinterface클래스
+		fa.smoointerface();// Coffeeinterface클래스
 		cho = scan.nextInt();
 		index = cho - 1;
 		if (cho > 0 && cho <= fa.smo.size()) {
@@ -116,7 +121,8 @@ public class Menu {
 		if (pack == 1) {
 			System.out.println("총가격 = " + (fa.smo.get(index).price) * count + "원");
 		} else if (eat == 1) {
-			System.out.println("총가격 = " + (((fa.smo.get(index).price) * count) + (500*count)) + "원");
+			System.out.println("계산 = " + (((fa.smo.get(index).price) * count)+"원 + 팁" + (tip * count)) + "원");
+			System.out.println("총가격 =" + (((fa.smo.get(index).price) * count)+ (tip * count)) + "원");
 		}
 		reset();
 	}
@@ -132,7 +138,7 @@ public class Menu {
 		} else {
 			System.out.println("잘못 입력함");
 		}
-		
+
 	}
 
 	void menuconfirm3() {
@@ -140,22 +146,27 @@ public class Menu {
 		System.out.println(fa.side.get(index) + "," + count + "개");
 		if (pack == 1) {
 			System.out.println("총가격 = " + (fa.side.get(index).price) * count + "원");
-			
+
 		} else if (eat == 1) {
-			System.out.println("총가격 = " + (((fa.side.get(index).price) * count) + (500*count)) + "원");
+			System.out.println("계산 = " + (((fa.side.get(index).price) * count)+"원 + 팁" + (tip * count)) + "원");
+			System.out.println("총가격 =" + (((fa.side.get(index).price) * count) + (tip * count)) + "원");
 		}
 		reset();
 	}
+
 	void reset() {
 		cho = 0;
 		count = 0;
 		index = 0;
-		eat = 0;
-		pack = 0;
-	}//초기화
-			
 		
-//추가할거 샷추가
+	}// 초기화
+	void buyend() {
+		System.out.println("구매종료");
+		
+	}
+	
+	
+	// 추가할거 샷추가
 
 	/*
 	 * void shot() { System.out.println("====샷 추가====");
