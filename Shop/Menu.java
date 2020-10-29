@@ -1,13 +1,15 @@
 package Shop;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 import membership.MemberEdit;
 
 public class Menu {
-	MemberEdit log = new MemberEdit();
 	Scanner scan = new Scanner(System.in);
+	MemberEdit log = new MemberEdit();
 	Coffeeinterface fa = new Coffeeinterface();
+	ShoppingDatainterface sa = new ShoppingDatainterface();
 	int cho = 0;// 선택
 	int count = 0;// 스캐너
 	int index = 0;
@@ -17,7 +19,7 @@ public class Menu {
 	int pack = 0;//포장하기
 
 	public Menu() {
-
+		startmenu();
 	}
 
 	public void startmenu() {
@@ -75,7 +77,7 @@ public class Menu {
 	 * void menuone(){ for(int i = 0 ; i>데이터베이스 length만큼 ; i++) i는ID 칼럼의 id넘버
 	 * System.out.println((i+1)+". "+id) }
 	 */
-
+//////주문 분기점 3개
 	// 커피 목록
 	void chocoffee() {
 		fa.Cofinterface();
@@ -95,9 +97,12 @@ public class Menu {
 		System.out.println(fa.cof.get(index) + "," + count + "개");
 		if (pack == 1) {
 			System.out.println("총가격 = " + (fa.cof.get(index).price) * count + "원");
+			sa.inputShoppingData1(index, count);
 		} else if (eat == 1) {
 			System.out.println("계산 = " + (((fa.cof.get(index).price) * count) +"원 + 팁"+ (tip * count)) + "원");
 			System.out.println("총가격 =" + (((fa.cof.get(index).price) * count) + (tip * count)) + "원");
+			sa.inputShoppingData1(index, count);
+			
 		}
 		reset();
 	}
@@ -120,9 +125,11 @@ public class Menu {
 		System.out.println(fa.smo.get(index) + "," + count + "개");
 		if (pack == 1) {
 			System.out.println("총가격 = " + (fa.smo.get(index).price) * count + "원");
+			sa.inputShoppingData2(index, count);
 		} else if (eat == 1) {
 			System.out.println("계산 = " + (((fa.smo.get(index).price) * count)+"원 + 팁" + (tip * count)) + "원");
 			System.out.println("총가격 =" + (((fa.smo.get(index).price) * count)+ (tip * count)) + "원");
+			sa.inputShoppingData2(index, count);
 		}
 		reset();
 	}
@@ -146,14 +153,17 @@ public class Menu {
 		System.out.println(fa.side.get(index) + "," + count + "개");
 		if (pack == 1) {
 			System.out.println("총가격 = " + (fa.side.get(index).price) * count + "원");
-
+			sa.inputShoppingData3(index, count);
+			
 		} else if (eat == 1) {
 			System.out.println("계산 = " + (((fa.side.get(index).price) * count)+"원 + 팁" + (tip * count)) + "원");
 			System.out.println("총가격 =" + (((fa.side.get(index).price) * count) + (tip * count)) + "원");
+			sa.inputShoppingData3(index, count);
 		}
 		reset();
 	}
-
+//////////
+	
 	void reset() {
 		cho = 0;
 		count = 0;
@@ -161,6 +171,13 @@ public class Menu {
 		
 	}// 초기화
 	void buyend() {
+		int sum = 0;
+		for(int i = 0 ; i<sa.shop.size() ; i++) {
+			System.out.println(sa.shop.get(i).payment());
+			sum = sum + sa.shop.get(i).price * sa.shop.get(i).count;
+		}
+		System.out.println("총가격 = "+ sum);
+		
 		System.out.println("구매종료");
 		
 	}
