@@ -3,10 +3,10 @@ package Shop;
 import java.util.ArrayList;
 
 public class Coffeeinterface {
-	ArrayList<CoffeeData> cof = new ArrayList<CoffeeData>();
-	ArrayList<CoffeeData> smo = new ArrayList<CoffeeData>();
-	ArrayList<CoffeeData> side = new ArrayList<CoffeeData>();
-
+	ArrayList<CoffeeData> cof = new ArrayList<CoffeeData>();//문제점1.인덱스값을 지정해준 변수 이름으로 포인팅해야되서 메뉴를 장르 하나씩만 선택가능
+	ArrayList<CoffeeData> side = new ArrayList<CoffeeData>();//문제점2.그로인해 for문도 3가지로 돌려야됨....
+	ArrayList<CoffeeData> smo = new ArrayList<CoffeeData>();//어레이리스트 하나로 해야함->DB쪽으로 생각 바꿈//해결책:무엇을 골랏는지의 정보를 담아야함
+	
 	public Coffeeinterface() {
 
 		Coffee();
@@ -37,7 +37,7 @@ public class Coffeeinterface {
 		side.add(1, new CoffeeData("애그샌드위치", 8000));
 		side.add(2, new CoffeeData("햄애그샌드위치", 12000));
 	}
-
+//Menu클래스에서쓸 커피메뉴 인터페이스
 	void Cofinterface() {
 		for (int i = 0; i < cof.size(); i++) {
 
@@ -58,6 +58,9 @@ public class Coffeeinterface {
 			
 		}
 	}
-	
+
+		
+			
+	//DB에서 칼럼 값 불러서 인터페이스 만들예정
 
 }
